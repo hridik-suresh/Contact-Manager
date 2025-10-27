@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv').config();
 const app = express();
+const { errorHandler } = require('./middlewares/errorHandler');
 
 const PORT = process.env.PORT || 3000;
 
@@ -8,8 +9,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());// Middleware to parse JSON bodies
 
 // Routes------------
-
 app.use('/api/contacts', require('./routes/contactRoutes'));
+
+// Error Handling Middleware------------
+app.use(errorHandler);
 
 // Start the server------------
 app.listen(PORT, () => {
