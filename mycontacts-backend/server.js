@@ -24,6 +24,7 @@ app.use(express.json());// Middleware to parse JSON bodies
 
 // Routes------------
 app.use('/api/contacts', require('./routes/contactRoutes'));
+app.use('/api/user', require('./routes/userRoutes'));
 
 // Error Handling Middleware------------
 app.use(errorHandler);
