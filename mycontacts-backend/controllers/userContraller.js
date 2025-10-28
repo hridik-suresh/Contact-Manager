@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const User = require("../models/userModel");
 
 //@desc Register new user
 //@route POST /api/user/register
