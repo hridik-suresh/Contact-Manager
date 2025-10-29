@@ -18,6 +18,11 @@ const createContact = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("All fields are mandatory!");
   }
+  const existingContact = await Contact.findOne({ phone });
+  if (existingContact) {
+    res.status(400);
+    throw new Error("Contact with this phone number already exists");
+  }
   const contact = await Contact.create({
     name,
     email,
